@@ -220,7 +220,10 @@ pomodoroTimer()
 
 
 function weatherFunctionality() {
-    var apiKey = '87cf32deedd9442793a70453250305'
+
+
+    // I have removed API key for security purpose
+    var apiKey = null
     var city = 'Bhopal'
 
 
