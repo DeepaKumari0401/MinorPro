@@ -1,8 +1,10 @@
 :root {
     --pri: #F8F4E1;
-    --sec: #381c0a;
+    /* --sec: #381c0a; */
+    --sec: black;
     --tri1: #FEBA17;
-    --tri2: #74512D;
+    /* --tri2: #74512D; */
+    --tri2:rgba(136, 173, 247, 0.88);
     --red: red;
     --green: rgb(9, 138, 89);
     --blue: rgb(0, 191, 255);
@@ -44,21 +46,20 @@ body {
 }
 
 #main {
-    height: 120%;
+    height: auto; /* or min-height: 100vh; */
     width: 100%;
     padding-top: 100px;
     background-color: var(--sec);
+    /* Remove overflow here */
 }
 
 
 section.allElems {
-    height: 100%;
+    height: auto; /* Let content decide height */
     width: 100%;
     padding: 40px;
-
-    overflow: auto;
-    position: absolute;
-
+    /* Remove overflow: auto; */
+    position: static; /* Not absolute */
 }
 
 .allElems header {
@@ -163,14 +164,16 @@ header .header2 h3 {
 }
 
 .fullElem {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background-color: var(--sec);
     padding: 40px;
     display: none;
-    position: absolute;
+    position: fixed; /* changed from absolute to fixed */
     top: 0;
-    z-index: 999;
+    left: 0;         /* ensure it starts from the left */
+    z-index: 9999;   /* higher z-index to cover everything */
+    overflow-y: auto; /* allow scrolling inside the fullElem */
 }
 
 .back {
@@ -670,4 +673,8 @@ nav {
 
 .theme:active {
     scale: 0.96;
+}
+
+body.fullElem-open, html.fullElem-open {
+    overflow: hidden;
 }
